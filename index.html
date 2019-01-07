@@ -1,3 +1,5 @@
+---
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,5 +20,24 @@
     <li><a href="https://linkedin.com/in/avikdas1990"><img src="/assets/images/logo-linkedin.png" width="64" height="64" /></a></li>
     <li><a href="https://github.com/avik-das"><img src="/assets/images/logo-github.png" width="64" height="64" /></a></li>
   </ul>
+
+  <section id="recent-posts">
+    <h2>Recent posts</h2>
+
+    {% comment %}
+    Only show the latest posts. In the future, there needs to be a dedicated,
+    paginated page with all the posts.
+    {% endcomment %}
+
+    <ul>
+      {% for post in site.posts limit:10 %}
+      <li><a href="{{ post.url }}">{{ post.title }}</a> - {{ post.post_date | date: "%b %-d, %Y" }}</li>
+      {% endfor %}
+
+      {% if site.posts.size > 10 %}
+      <li><a href="/posts">All posts</a></li>
+      {% endif %}
+    </ul>
+  </section>
 </body>
 </html>
