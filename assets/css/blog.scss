@@ -150,11 +150,17 @@ figure {
       width: 110%;
       margin-left: -5%;
     }
+
+    &.in-text img {
+      width: 100%;
+      margin-left: 0;
+    }
   }
 
   @media screen and (max-width: $mobile-width) {
     &.full img,
-    &.popout img {
+    &.popout img,
+    &.in-text img {
       width: calc(100% + 40px);
       margin-left: -20px;
     }
@@ -176,6 +182,15 @@ figure {
     margin-top: 5px;
     font-size: 70%;
   }
+}
+
+h1 + figure,
+h2 + figure,
+h3 + figure,
+h4 + figure,
+h5 + figure,
+h6 + figure {
+  margin-top: 32px;
 }
 
 // CODE SNIPPETS //////////////////////////////////////////////////////////////
