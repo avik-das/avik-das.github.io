@@ -1,7 +1,6 @@
 ---
 title: "Setting up an LCD screen on the Raspberry Pi, 2019 edition"
 layout: blog
-post_date: 2018-12-31
 thanks:
   - Ty Terdan
 ---

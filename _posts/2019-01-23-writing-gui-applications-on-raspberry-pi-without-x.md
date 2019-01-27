@@ -1,7 +1,6 @@
 ---
 title: "Writing GUI applications on the Raspberry Pi without a desktop environment"
 layout: blog
-post_date: 2019-01-23
 thanks:
   - Ty Terdan
   - Aloke Das
