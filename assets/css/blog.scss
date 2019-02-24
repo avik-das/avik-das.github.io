@@ -87,10 +87,22 @@ h1, h2, h3, h4, h5, h6 {
 
 h2, h3, h4, h5, h6 {
   font-family: Junction, sans-serif;
-  margin-top: 75px;
   margin-bottom: 0;
 }
 
+// Each main section should be visually separated from the previous one.
+h2 {
+  margin-top: 75px;
+}
+
+// Sub-sections don't need as much visual separation.
+h3, h4, h5, h6 {
+  margin-top: 50px;
+}
+
+// Headers that follow other headers need even less separation. Typically, this
+// should be avoided, as each larger section should have an introduction before
+// starting the first sub-section.
 h1 + h2, h2 + h3, h3 + h4, h4 + h5, h5 + h6 {
   margin-top: 16px;
 }
@@ -186,7 +198,11 @@ figure {
     text-align: center;
     font-style: italic;
     margin-top: 5px;
-    font-size: 70%;
+
+    font-size: 80%;
+    @media screen and (max-width: $mobile-width) {
+      font-size: 70%;
+    }
   }
 }
 
