@@ -383,6 +383,6 @@ This is one of the few places where you will need to duplicate some of the decla
 
 ---
 
-There are still a few problems with our Ruby bindings to Raylib. For example, you won't be able to use a few library functions out of the box. I'll go over these problems, and more, in my next post.
+There are still a few problems with our Ruby bindings to Raylib. For example, you won't be able to use a few library functions out of the box. [I'll go over these problems, and more, in my next post.]({% post_url 2019-03-04-creating-raspberry-pi-applications-with-raylib-and-ruby-part-2 %})
 
 Nevertheless, by working through the above steps, I can now write lightweight GUI applications in Ruby. Even without any modifications, just having the ability to combine Raylib with a higher-level language means I can experiment with the UI and behavior of my application more productively than I could using only C.
