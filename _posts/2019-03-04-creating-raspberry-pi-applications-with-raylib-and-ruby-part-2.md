@@ -3,7 +3,7 @@ title: "Creating Raspberry Pi applications with Raylib and Ruby - Part II"
 layout: blog
 ---
 
-<figure markdown="1" class="full">
+<figure markdown="1">
 ![Four weather predictions are shown at three hour intervals. Each prediciton has an icon showing the predicted weather, and a predicted temperature. The temperatures are connected in a line chart.](/assets/images/2019-03-04-creating-raspberry-pi-applications-with-raylib-and-ruby-part-2/hud-weather-forecast.jpg)
 <figcaption>My personal heads-up display, running on my Raspberry Pi and showing the weather forecast. This feature was easy to develop thanks to some higher-level abstractions I wrote for myself in Ruby.</figcaption>
 </figure>
@@ -71,7 +71,7 @@ pid, size = `ps ax -o pid,rss | grep -E "^[[:space:]]*#{$$}"`
 
 The three programs tested different scenarios.
 
-<figure markdown="1" class="popout">
+<figure markdown="1">
 ![Three graphs drawn using Raylib, each showing the memory usage of a different program. The first two show the memory usage go up over time, and the third graph shows constant, low memory usage.](/assets/images/2019-03-04-creating-raspberry-pi-applications-with-raylib-and-ruby-part-2/memory-leaks.png)
 <figcaption>These three graphs (drawn using Raylib) show memory usage of the programs below. From left to right: the native extension memory leak, the memory leak due to storing colors in an array, and the lack of a memory leak in the last program.</figcaption>
 </figure>
@@ -86,7 +86,7 @@ With these experiments, I was confident my memory usage tracking was working, an
 
 ## Wrapping array parameters
 
-<figure markdown="1" class="popout">
+<figure markdown="1">
 ![Twenty wedges (four-sided polygons) of varying lengths arranged in a circle, with each wedge colored from green to red based on its length.](/assets/images/2019-03-04-creating-raspberry-pi-applications-with-raylib-and-ruby-part-2/polygon-drawing.jpg)
 <figcaption>The polygons in this application were drawn using "DrawPolyEx", a function that can't be used from Ruby without the modifications described below</figcaption>
 </figure>
@@ -272,7 +272,7 @@ end
 
 ## Automating the build process
 
-<figure markdown="1" class="popout">
+<figure markdown="1">
 ![Running "rake raylib" to order to build the native extension](/assets/images/2019-03-04-creating-raspberry-pi-applications-with-raylib-and-ruby-part-2/rake-pipeline.png)
 <figcaption>The pipeline I set up below allows me to run a single command and have the native extension built correctly for the current platform.</figcaption>
 </figure>

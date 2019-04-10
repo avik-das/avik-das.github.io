@@ -3,7 +3,7 @@ title: "Creating Raspberry Pi applications with Raylib and Ruby"
 layout: blog
 ---
 
-<figure markdown="1" class="full">
+<figure markdown="1">
 ![An application that shows the Raylib logo, the Ruby logo and the source code for itself](/assets/images/2019-02-19-creating-raspberry-pi-applications-with-raylib-and-ruby/logos-and-source-code.png)
 <figcaption>A small application I wrote in Ruby, using Raylib. The application displays its own source code.</figcaption>
 </figure>
@@ -267,7 +267,7 @@ make
 
 ## Using Raylib in a Ruby program
 
-<figure markdown="1" class="popout">
+<figure markdown="1">
 ![My Raspberry Pi, running an applications showing a grid of colors sorted by hue and luminance](/assets/images/2019-02-19-creating-raspberry-pi-applications-with-raylib-and-ruby/color-grid.jpg)
 <figcaption>Another application I wrote, this time showing colors on my Raspberry Pi. Ruby's high-level features make the code compact.</figcaption>
 </figure>

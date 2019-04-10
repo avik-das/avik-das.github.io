@@ -6,7 +6,7 @@ thanks:
   - Aloke Das
 ---
 
-<figure markdown="1" class="full">
+<figure markdown="1">
 ![](/assets/images/2019-01-23-writing-gui-applications-on-raspberry-pi-without-x/pi-hud.jpg)
 <figcaption>A simple clock and weather application I've had sitting on my dining room table</figcaption>
 </figure>
@@ -59,7 +59,7 @@ Note that you definitely don't want to do this if you want to display on both th
 
 ## Displaying graphics via the framebuffer
 
-<figure markdown="1" class="popout">
+<figure markdown="1">
 ![](/assets/images/2019-01-23-writing-gui-applications-on-raspberry-pi-without-x/raw-framebuffer-application.jpg)
 <figcaption>A C application I wrote that outputs directly to the Linux framebuffer</figcaption>
 </figure>
@@ -145,7 +145,7 @@ Instead of writing your own code to push bytes into the framebuffer, we can use 
 
 ### Building Raylib
 
-<figure markdown="1" class="popout">
+<figure markdown="1">
 ![](/assets/images/2019-01-23-writing-gui-applications-on-raspberry-pi-without-x/raylib-application.jpg)
 <figcaption>One of the Raylib examples included with the library. I had to edit the code to specify a lower screen resolution.</figcaption>
 </figure>
@@ -235,7 +235,7 @@ The basic approach is to use the `tslib` library to take the raw touch events, t
 
 [Raylib provides comprehensive on how to integrate with `tslib`.](https://github.com/raysan5/raylib/wiki/Install-and-configure-Touchscreen-Drivers-(RPi)) Unfortunately, the documentation seems to be a little out of date, so I'll explain what's different.
 
-<figure markdown="1" class="in-text">
+<figure markdown="1">
 ![](/assets/images/2019-01-23-writing-gui-applications-on-raspberry-pi-without-x/raylib-touch-application.jpg)
 <figcaption>Another example program included with Raylib. I had to change hard-coded values throughout the program to fit the smaller screen.</figcaption>
 </figure>

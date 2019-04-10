@@ -5,22 +5,22 @@ thanks:
   - Ty Terdan
 ---
 
-<figure markdown="1" class="full">
+<figure markdown="1">
 ![The PIXEL desktop works, with touchscreen support](/assets/images/2018-12-31-setting-up-lcd-screen-on-raspberry-pi/show-desktop.jpg)
 </figure>
 
 I recently bought a [3.5" TFT touchscreen display](https://www.amazon.com/gp/product/B07FJWGZC2/) for my Raspberry Pi. The display connects via the GPIO pins and fits neatly onto the form factor of the Raspberry Pi 3. The idea was to add a GUI application onto the Pi, which had until now been acting as a headless web and application server.
-
-<figure markdown="1" class="aside aside-left">
-![](/assets/images/2018-12-31-setting-up-lcd-screen-on-raspberry-pi/turned-off.jpg)
-<figcaption>After the screen and case are installed. I still need to take off the protective film.</figcaption>
-</figure>
 
 The installation of the hardware was straightforward, but setting up the Pi to display onto the new LCD didn’t go so well. It turns out this LCD, and many similar ones, ask you to enable the LCD via scripts in the [`LCD-show` project](https://github.com/goodtft/LCD-show). On my first attempt, I simply ran the relevant script (`LCD35-show`) as requested, but I ended up not being able to connect to my WiFi anymore!
 
 I found out the scripts mess with a number of system files, overwriting configurations that are integral to the operation of the Pi. The overwritten files are based on the ones provided by Raspbian, so ideally not much should be changing. However, the new files are based on older versions of Raspbian. Additionally, the scripts do much more than they need to.
 
 As a second attempt, **I read through the script and applied the changes manually based on my understanding of what was needed to enable the LCD**. Below are my notes taken during the process.
+
+<figure markdown="1">
+![](/assets/images/2018-12-31-setting-up-lcd-screen-on-raspberry-pi/turned-off.jpg)
+<figcaption>After the screen and case are installed. I still need to take off the protective film.</figcaption>
+</figure>
 
 ## Enabling the 3.5" display
 
@@ -131,7 +131,7 @@ At this point, the TFT LCD is set up. If you just want a display for the console
 sudo reboot
 ```
 
-<figure markdown="1" class="popout">
+<figure markdown="1">
 ![](/assets/images/2018-12-31-setting-up-lcd-screen-on-raspberry-pi/show-console.jpg)
 <figcaption>Viewing the console on the new touchscreen</figcaption>
 </figure>
@@ -221,7 +221,7 @@ And finally, reboot!
 sudo reboot
 ```
 
-<figure markdown="1" class="popout">
+<figure markdown="1">
 ![](/assets/images/2018-12-31-setting-up-lcd-screen-on-raspberry-pi/show-desktop.jpg)
 <figcaption>The PIXEL desktop works, with touchscreen support</figcaption>
 </figure>

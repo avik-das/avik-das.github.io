@@ -3,265 +3,68 @@
 
 // SASS VARIABLES /////////////////////////////////////////////////////////////
 
-$mobile-width: 800px;
 $lighter-text-color: #666;
-
-// FONTS //////////////////////////////////////////////////////////////////////
-
-@font-face {
-  font-family: 'Linden Hill';
-  src: url('/assets/fonts/linden-hill-regular.woff') format('woff2');
-}
-
-@font-face {
-  font-family: 'Linden Hill';
-  font-style: italic;
-  src: url('/assets/fonts/linden-hill-italic.woff') format('woff2');
-}
-
-@font-face {
-  font-family: Junction;
-  src: url('/assets/fonts/junction-regular.woff') format('woff2');
-}
-
-@font-face {
-  font-family: Junction;
-  font-weight: bold;
-  src: url('/assets/fonts/junction-bold.woff') format('woff2');
-}
+$body-padding: 20px;
 
 // PAGE LAYOUT ////////////////////////////////////////////////////////////////
 
 body {
   margin: auto;
-  font: 26px 'Linden Hill', serif;
 
-  max-width: 32em;
-  padding: 40px 100px;
-
-  @media screen and (max-width: $mobile-width) {
-    box-sizing: border-box;
-
-    width: 100%;
-    max-width: none;
-    padding: 20px;
-
-    font-size: 22px;
-  }
+  max-width: 48em;
+  padding: $body-padding;
 }
 
 #post-date {
   text-align: center;
-  font: 16px Junction, sans-serif;
   color: $lighter-text-color;
-
-  @media screen and (max-width: $mobile-width) {
-    font-size: 10px;
-  }
 }
 
-// HEADERS ////////////////////////////////////////////////////////////////////
+// TEXT ///////////////////////////////////////////////////////////////////////
 
-h1 {
-  text-align: center;
-}
+h1 { text-align: center; }
+h1, h2, h3, h4, h5, h6 { font-family: sans-serif; }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: Junction, sans-serif;
-  font-weight: normal;
-  line-height: 120%;
-}
-
-@media screen and (max-width: $mobile-width) {
-  // If the sizes of the headers are too big, they take up too much space on
-  // smaller screens. Make them smaller, even though the hierarchy of font
-  // sizes is less apparent. In practice, only h1 through h3 are used.
-
-  h1 { font-size: 120%; }
-  h2 { font-size: 110%; }
-  h3 { font-size: 100%; }
-  h4 { font-size: 90%; }
-  h5 { font-size: 80%; }
-  h6 { font-size: 70%; }
-}
-
-h2, h3, h4, h5, h6 {
-  font-family: Junction, sans-serif;
-  margin-bottom: 0;
-}
-
-// Each main section should be visually separated from the previous one.
-h2 {
-  margin-top: 75px;
-}
-
-// Sub-sections don't need as much visual separation.
-h3, h4, h5, h6 {
-  margin-top: 50px;
-}
-
-// Headers that follow other headers need even less separation. Typically, this
-// should be avoided, as each larger section should have an introduction before
-// starting the first sub-section.
-h1 + h2, h2 + h3, h3 + h4, h4 + h5, h5 + h6 {
-  margin-top: 16px;
-}
-
-// BODY TEXT //////////////////////////////////////////////////////////////////
-
-p, ol, ul {
-  @media screen and (min-width: $mobile-width + 1) {
-    line-height: 1.6em;
-  }
-
-  @media screen and (max-width: $mobile-width) {
-    line-height: 1.4em;
-  }
-}
+p, ol, ul, pre { line-height: 1.4; }
 
 hr {
-  border: 2px solid #aaa;
-  width: 3em;
+  border: 0.5px solid #ccc;
+  width: 50%;
+  margin: 1em auto;
 }
 
 // IMAGES /////////////////////////////////////////////////////////////////////
 
 figure {
-  margin: 0 0 20px 0;
+  margin: 0;
   padding: 0;
 
-  & > p {
-    margin: 0;
-  }
-
   img {
-    margin: 0;
-  }
-
-  @media screen and (min-width: $mobile-width + 1) {
-    &.full img {
-      width: 120%;
-      margin-left: -10%;
-    }
-
-    &.aside {
-      width: 45%;
-
-      img {
-        width: 100%;
-      }
-    }
-
-    &.aside-left {
-      float: left;
-      margin-left: -100px;
-      margin-right: 40px;
-    }
-
-    &.aside-right {
-      float: right;
-      margin-left: 40px;
-      margin-right: -100px;
-    }
-
-    &.popout img {
-      width: 110%;
-      margin-left: -5%;
-    }
-
-    &.in-text img {
-      width: 100%;
-      margin-left: 0;
-    }
-  }
-
-  @media screen and (max-width: $mobile-width) {
-    &.full img,
-    &.popout img,
-    &.in-text img {
-      width: calc(100% + 40px);
-      margin-left: -20px;
-    }
-
-    &.aside {
-      text-align: center;
-
-      img {
-        width: 100%;
-        max-width: 600px;
-        margin: 0 auto;
-      }
-    }
+    width: calc(100% + #{$body-padding * 2});
+    margin: 0 0 0 #{-$body-padding};
   }
 
   figcaption {
     text-align: center;
     font-style: italic;
-    margin-top: 5px;
-
-    font-size: 80%;
-    @media screen and (max-width: $mobile-width) {
-      font-size: 70%;
-    }
+    font-size: .95em;
   }
-}
-
-h1 + figure,
-h2 + figure,
-h3 + figure,
-h4 + figure,
-h5 + figure,
-h6 + figure {
-  margin-top: 32px;
 }
 
 // CODE SNIPPETS //////////////////////////////////////////////////////////////
 
 pre {
   background: #eee;
-  padding: 20px;
+  padding: $body-padding;
 
   overflow-x: auto;
 
-  @media screen and (min-width: $mobile-width + 1) {
-    line-height: 24px;
-  }
-
-  @media screen and (max-width: $mobile-width) {
-    box-sizing: border-box;
-    width: calc(100% + 40px);
-    margin-left: -20px;
-
-    line-height: 12px;
-  }
-}
-
-code {
-  font-size: 18px;
-
-  @media screen and (max-width: $mobile-width) {
-    font-size: 10px;
-  }
+  width: 100%;
+  margin: 0 0 0 #{-$body-padding};
+  padding: auto $body-padding;
 }
 
 // FOOTER /////////////////////////////////////////////////////////////////////
 
-#thanks {
-  font: 16px Junction, sans-serif;
-  color: $lighter-text-color;
-
-  @media screen and (max-width: $mobile-width) {
-    font-size: 10px;
-  }
-}
-
-body > hr:last-of-type {
-  margin-top: 80px;
-  border-width: 1px;
-  width: 5em;
-}
-
-#bottom-links {
-  text-align: center;
-  font-size: 90%;
-}
+#thanks { color: $lighter-text-color; }
+#bottom-links { text-align: center; }
