@@ -36,5 +36,26 @@
   <hr />
 
   <p id="bottom-links"><a href="/">Home</a></p>
+
+  {% if page.has_math %}
+
+  {% comment %}
+  Only include the MathJax Javascript if the post has math in it. The script is
+  loaded from CDNJS in case it's already cached on the viewer's browser.
+  {% endcomment %}
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        inlineMath: [['$','$']]
+      }
+    });
+  </script>
+  <script
+    type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+    async></script>
+  {% endif %}
 </body>
 </html>
