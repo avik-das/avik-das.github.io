@@ -64,6 +64,8 @@ pre {
   padding: auto $body-padding;
 }
 
+.MathJax_Display { overflow-x: auto; }
+
 // FOOTER /////////////////////////////////////////////////////////////////////
 
 #thanks { color: $lighter-text-color; }
