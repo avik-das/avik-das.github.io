@@ -39,9 +39,56 @@ figure {
   margin: 0;
   padding: 0;
 
-  img {
+  img, .youtube-video {
     width: calc(100% + #{$body-padding * 2});
     margin: 0 0 0 #{-$body-padding};
+  }
+
+  .youtube-video {
+    // Scaling Youtube videos is not trivial. The problem is, unlike an image,
+    // the iframe used to embed the video does not have a "natural" height.
+    // Thus, the HTML needs to specify both a static width and height. When the
+    // width is changed with the above CSS, the height does not change.
+    //
+    // To scale the height automatically with the width, we do the following:
+    //
+    // - Wrap the iframe in a div. This container is the one whose width is
+    //   set above.
+    //
+    // - Use `padding-bottom` to choose a height for the container relative to
+    //   the width. The reason for choosing `padding-bottom` is outlined in
+    //   this alistapart article [1]. Because we want this padding to fully
+    //   control the height of the container, the height is set to zero.
+    //
+    // - The iframe contained inside the wrapper element is set to fill up the
+    //   entire container using `position: absolute`. This requires the
+    //   container to be position via `position: relative`, so that the iframe
+    //   is laid out relative to the container (the `position` attribute
+    //   performs positioning relative to the nearest parent with a `position`
+    //   attribute).
+    //
+    // Unfortunately, because divs and iframes don't have a natural aspect
+    // ratio, we have to specify one. Here, all Youtube videos will have an
+    // aspect ratio of 16:9, which is what leads to the height to width ratio
+    // of 9/16 = 56.25%.
+    //
+    // [1] http://alistapart.com/article/creating-intrinsic-ratios-for-video/
+
+    position: relative;
+
+    height: 0;
+    padding-bottom: calc(56.25% + #{$body-padding * 2});
+
+    margin-top: 16px;
+    margin-bottom: 16px;
+
+    > iframe {
+      position: absolute;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+    }
   }
 
   figcaption {
