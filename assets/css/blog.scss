@@ -38,9 +38,10 @@ hr {
 figure {
   margin: 0;
   padding: 0;
+  text-align: center;
 
   img, .youtube-video {
-    width: calc(100% + #{$body-padding * 2});
+    max-width: calc(100% + #{$body-padding * 2});
     margin: 0 0 0 #{-$body-padding};
   }
 
@@ -92,7 +93,6 @@ figure {
   }
 
   figcaption {
-    text-align: center;
     font-style: italic;
     font-size: .95em;
   }
