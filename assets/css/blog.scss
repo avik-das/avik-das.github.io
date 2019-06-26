@@ -116,4 +116,21 @@ pre {
 // FOOTER /////////////////////////////////////////////////////////////////////
 
 #thanks { color: $lighter-text-color; }
-#bottom-links { text-align: center; }
+
+#bottom-links {
+  text-align: center;
+  list-style: none;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  li {
+    padding: 0 8px;
+    a {
+      display: block;
+      height: 24px;
+    }
+  }
+}
