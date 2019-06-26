@@ -271,7 +271,7 @@ There is one subproblem corresponding to each pixel in the original image. For e
 
 At each time, we store two lists, one for the previous row and one for the current row. The first one has $W$ elements, and second one grows to have $W$ elements at most. Thus, the space complexity is $O(2W)$, which is simply $O(W)$.
 
-Note that if we actually discarded elements from the previous row's data, we would shrink the previous row's list at about the same rate as the current row's list. Thus, the time complexity would still be $O(W)$. Depending on the width of the image, the constant factor can certainly matter, but usually, it's not a big deal.
+Note that if we actually discarded elements from the previous row's data, we would shrink the previous row's list at about the same rate as the current row's list. Thus, the space complexity would still be $O(W)$. Depending on the width of the image, the constant factor can certainly matter, but usually, it's not a big deal.
 
 ## Back pointers to find the lowest-energy seam
 
