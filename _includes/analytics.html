@@ -1,0 +1,32 @@
+{% if jekyll.environment == "production" %}
+<script async>
+  // Track a single visit to the current page. The Javascript below is left
+  // unobfuscated to show exactly what is being tracked:
+  //
+  // - Which page the visit happened on.
+  // - Where the visit originated from.
+  //
+  // Feel free to block this script. My goal is just to understand how much
+  // traffic I'm getting and where I'm getting it from. For example, with
+  // uBlock Origin's inline script filtering, you can block the script based on
+  // the following unique string:
+  //
+  //   blockable-analytics
+
+  const payload = {
+    path: window.location.pathname,
+    source: document.referrer
+  };
+
+  fetch(
+    'https://analytics.avikdas.com:1443/track_visit',
+    {
+      method: 'POST',
+      mode: 'cors',
+      cache: 'no-cache',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }
+  );
+</script>
+{% endif %}
