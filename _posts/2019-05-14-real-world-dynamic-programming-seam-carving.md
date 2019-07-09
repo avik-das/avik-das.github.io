@@ -69,7 +69,7 @@ $$
 
 $$
 \begin{aligned}
-e(x, y)      &= | \Delta x | ^2 + | \Delta y | ^2
+e(x, y)      &= \sqrt{| \Delta x | ^2 + | \Delta y | ^2}
 \end{aligned}
 $$
 
