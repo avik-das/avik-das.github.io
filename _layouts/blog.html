@@ -7,6 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#cdffcd">
 
+  {% feed_meta %}
+
   <title>{{ page.title }}</title>
 
   <link rel="stylesheet" href="/assets/css/blog.css">
@@ -36,9 +38,9 @@
 
   <ul id="bottom-links">
     <li><a href="/">Home</a></li>
-    <li><a href="https://linkedin.com/in/avikdas1990"><img src="/assets/images/logo-linkedin.png" width="24" height="24" /></a></li>
-    <li><a href="https://github.com/avik-das"><img src="/assets/images/logo-github.png" width="24" height="24" /></a></li>
-    <li><a href="https://twitter.com/the_avik_das"><img src="/assets/images/logo-twitter.png" width="24" height="24" /></a></li>
+    <li><a href="{{ site.author.linkedin }}"><img src="/assets/images/logo-linkedin.png" width="24" height="24" /></a></li>
+    <li><a href="{{ site.author.github }}"><img src="/assets/images/logo-github.png" width="24" height="24" /></a></li>
+    <li><a href="{{ site.author.twitter }}"><img src="/assets/images/logo-twitter.png" width="24" height="24" /></a></li>
   </ul>
 
   {% if page.has_math %}

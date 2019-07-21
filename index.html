@@ -14,6 +14,8 @@
   <meta name="msapplication-TileColor" content="#00a300">
   <meta name="theme-color" content="#cdffcd">
 
+  {% feed_meta %}
+
   <title>Avik Das</title>
 
   <link rel="stylesheet" href="/assets/css/index.css">
@@ -24,9 +26,9 @@
   <h1 id="name">Avik Das</h1>
 
   <ul id="external-sites">
-    <li><a href="https://linkedin.com/in/avikdas1990"><img src="/assets/images/logo-linkedin.png" width="64" height="64" /></a></li>
-    <li><a href="https://github.com/avik-das"><img src="/assets/images/logo-github.png" width="64" height="64" /></a></li>
-    <li><a href="https://twitter.com/the_avik_das"><img src="/assets/images/logo-twitter.png" width="64" height="64" /></a></li>
+    <li><a href="{{ site.author.linkedin }}"><img src="/assets/images/logo-linkedin.png" width="64" height="64" /></a></li>
+    <li><a href="{{ site.author.github }}"><img src="/assets/images/logo-github.png" width="64" height="64" /></a></li>
+    <li><a href="{{ site.author.twitter }}"><img src="/assets/images/logo-twitter.png" width="64" height="64" /></a></li>
   </ul>
 
   <section id="recent-posts">

@@ -1,0 +1,15 @@
+title: Avik Das
+description: >
+  My name is Avik Das. I'm a software developer with strong theoretical and
+  mathematical foundations, as well as extensive industry experience. To me,
+  technology is a tool for delivering meaningful products. In my spare time, I
+  enjoy cooking, weightlifting and drawing.
+
+author:
+  name: Avik Das
+  github: https://github.com/avik-das
+  linkedin: https://linkedin.com/in/avikdas1990
+  twitter: https://twitter.com/the_avik_das
+
+plugins:
+    - jekyll-feed
