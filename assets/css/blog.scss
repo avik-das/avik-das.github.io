@@ -27,6 +27,12 @@ h1, h2, h3, h4, h5, h6 { font-family: sans-serif; }
 
 p, ol, ul, pre { line-height: 1.4; }
 
+blockquote {
+  border-left: 2px solid #ddd;
+  padding-left: 16px;
+  margin-left: 16px;
+}
+
 hr {
   border: 0.5px solid #ccc;
   width: 50%;
