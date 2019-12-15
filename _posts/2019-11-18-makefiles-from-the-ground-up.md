@@ -252,3 +252,5 @@ clean:
 Each part of the Makefile serves a purpose, and that purpose should make sense given the way we've built up the Makefile. In a later post, I will talk about how Make simplifies the process of building certain types of projects, namely C projects.
 
 Until then, feel free to read [the excellent GNU Make manual](https://www.gnu.org/software/make/manual/html_node/index.html). Keep in mind, however, that manual technically documents the GNU version of Make. That means certain documented features are not available in the default Make utility installed on macOS or on BSDs.
+
+_UPDATE: [you can now read about using Make to build C and C++ projects]({% post_url 2019-12-16-makefiles-for-c-cpp-projects %})._
