@@ -22,7 +22,7 @@ clean:
 	rm $(MIDS) $(OUT)
 ```
 
-In this post, we'll replace the placeholder compilation and linking steps with real calls to a C or C++ compiler, then see how the Make program makes our lives easier.
+In this post, we'll replace the placeholder compilation and linking steps with real calls to a C or C++ compiler, then see how the Make program makes our lives easier. The latter part in particular is specific to the GNU version of Make.
 
 Let's start with a project with only C source code, no C++ source code.
 
@@ -96,7 +96,7 @@ Let's take another look at the rule to compile C source code into `.o` files:
 	$(CC) $(CFLAGS) -c -o $@ $^
 ```
 
-This is the type of rule that would be useful in many projects. There are enough variables that each project can customize the compilation process, for example by changing out the compiler, or passing different flags to the compiler. For this reason, (GNU) Make already contains this rule built right in! This is an example of an _implicit_ rule.
+This is the type of rule that would be useful in many projects. There are enough variables that each project can customize the compilation process, for example by changing out the compiler, or passing different flags to the compiler. For this reason, GNU Make already contains this rule built right in! This is an example of an _implicit_ rule.
 
 Practically, this means you can just remove the two lines above and everything will work just fine. Even the `CC` and  `CFLAGS` variables we defined will be honored, and even better, they have default values of `cc` and an empty string respectively.
 

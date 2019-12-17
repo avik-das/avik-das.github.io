@@ -5,7 +5,7 @@ layout: blog
 
 When I first started using Makefiles to build software projects, I often copy pasted from examples I found. I also assumed the Make tool worked like other build systems I had used, like Maven or Gradle in the Java world. While both approaches helped me learn the tool, it took me some time to really understand Make and how to take advantage of its unique features.
 
-In this article, I will walk through the creation of a simple Makefile from scratch, explaining each concept being added to the Makefile. By the end, the goal is to understand the fundamentals of how Make operates.
+In this article, I will walk through the creation of a simple Makefile from scratch, explaining each concept being added to the Makefile. By the end, the goal is to understand the fundamentals of how Make operates. This post assumes the use of the GNU version of Make, a specific implementation, and therefore some of the syntax is not applicable to other implementations. However, the basic concept of a file-based dependency structure still applies to Make in general.
 
 I am by no means an expert on Make, so I'm happy to receive feedback on how I could achieve what I've done more efficiently!
 
