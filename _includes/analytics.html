@@ -14,7 +14,11 @@
   //   blockable-analytics
 
   const payload = {
-    path: window.location.pathname,
+    // Note: use the server-side generated path, instead of reading the path
+    // from the browser. This is important because the Pocket app
+    // (https://getpocket.com/) embeds web pages into the app, and the browser
+    // reports the current URL incorrectly.
+    path: '{{ page.url }}',
     source: document.referrer
   };
 
