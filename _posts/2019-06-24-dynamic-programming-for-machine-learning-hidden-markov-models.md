@@ -15,6 +15,8 @@ In this article, I'll explore one technique used in machine learning, Hidden Mar
 
 This article is part of an ongoing series on dynamic programming. If you need a refresher on the technique, see my [graphical introduction to dynamic programming]({% post_url 2019-04-15-a-graphical-introduction-to-dynamic-programming %}).
 
+(I gave a talk on this topic at PyData Los Angeles 2019, if you prefer [a video version of this post](https://youtu.be/MADX-L75ub8).)
+
 ## Defining a Hidden Markov Model
 
 A Hidden Markov Model deals with inferring the **state** of a system given some unreliable or ambiguous **observations** from that system. One important characteristic of this system is the state of the system evolves over time, producing a sequence of observations along the way. There are some additional characteristics, ones that explain the Markov part of HMMs, which will be introduced later. By incorporating some domain-specific knowledge, it's possible to take the observations and work backwards to a maximally plausible ground truth.
