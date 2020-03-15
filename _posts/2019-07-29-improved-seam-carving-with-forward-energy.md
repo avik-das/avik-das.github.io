@@ -1,6 +1,7 @@
 ---
 title: "Improved seam carving with forward energy"
 layout: blog
+cover-img: /assets/images/2019-05-14-real-world-dynamic-programming-seam-carving/arch-seam.jpg
 has_math: true
 ---
 
@@ -28,7 +29,7 @@ Unfortunately, the same algorithm, while producing a result with no sharp lines 
 
 <figure markdown="1">
 <!-- NOTE: reusing an image from an older post -->
-![](/assets/images/2019-05-14-real-world-dynamic-programming-seam-carving/arch-seam.jpg)
+![]({{ page.cover-img }})
 <figcaption markdown="1">A rock formation with a hole in the middle, shown with the lowest-energy seam visualized by a red line five pixels wide. Credit for original image goes to [Mike Goad](https://www.flickr.com/photos/exit78/) on [Flickr](https://flic.kr/p/4hxxz5).
 </figcaption>
 </figure>

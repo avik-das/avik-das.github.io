@@ -1,6 +1,7 @@
 ---
 title: "What I learned as a software engineer at a data science conference"
 layout: blog
+cover-img: /assets/images/2019-12-09-what-i-learned-as-a-software-engineer-at-a-data-science-conference/tools.png
 ---
 
 Last week, I had the pleasure of attending and speaking at [PyData LA 2019](https://pydata.org/la2019/). Coming from a software engineering background, I learned some things data scientists may consider basic, but it was a fantastic experience all around. Here's what I learned.
@@ -8,7 +9,7 @@ Last week, I had the pleasure of attending and speaking at [PyData LA 2019](http
 ## Tools of the trade
 
 <figure markdown="1">
-![Logos for the tools mentioned below](/assets/images/2019-12-09-what-i-learned-as-a-software-engineer-at-a-data-science-conference/tools.png)
+![Logos for the tools mentioned below]({{ page.cover-img }})
 </figure>
 
 Even though I know data science concepts, I didn't know all the tools scientists use daily.

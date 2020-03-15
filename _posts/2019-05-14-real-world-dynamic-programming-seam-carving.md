@@ -1,6 +1,7 @@
 ---
 title: "Real-world dynamic programming: seam carving"
 layout: blog
+cover-img: /assets/images/2019-05-14-real-world-dynamic-programming-seam-carving/surfer-seam.jpg
 has_math: true
 ---
 
@@ -34,7 +35,7 @@ What Avidan and Shamir show in their paper is a technique known as _seam carving
 In the surfer image, the lowest-energy seam goes through the middle of the image, where the water is the calmest. This matches our intuition.
 
 <figure markdown="1">
-![](/assets/images/2019-05-14-real-world-dynamic-programming-seam-carving/surfer-seam.jpg)
+![]({{ page.cover-img }})
 <figcaption>The lowest-energy seam found in the surfer image. The seam is visualized by a red line five pixels wide for visibility, even though in reality the seam is only one pixel wide.</figcaption>
 </figure>
 

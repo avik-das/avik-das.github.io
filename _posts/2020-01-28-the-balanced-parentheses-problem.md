@@ -1,10 +1,11 @@
 ---
 title: "The balanced parentheses problem"
 layout: blog
+cover-img: /assets/images/2020-01-28-the-balanced-parentheses-problem/balance-board.jpg
 ---
 
 <figure markdown="1">
-![A person balancing on a balance board, as training before surfing.](/assets/images/2020-01-28-the-balanced-parentheses-problem/balance-board.jpg)
+![A person balancing on a balance board, as training before surfing.]({{ page.cover-img }})
 <figcaption markdown="1">Photo by [Gustavo Torres](https://unsplash.com/@topspot) on [Unsplash](https://unsplash.com/photos/rBLTWS3WsQ8)
 </figcaption>
 </figure>

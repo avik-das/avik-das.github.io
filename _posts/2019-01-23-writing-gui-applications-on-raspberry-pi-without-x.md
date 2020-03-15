@@ -1,13 +1,14 @@
 ---
 title: "Writing GUI applications on the Raspberry Pi without a desktop environment"
 layout: blog
+cover-img: /assets/images/2019-01-23-writing-gui-applications-on-raspberry-pi-without-x/pi-hud.jpg
 thanks:
   - Ty Terdan
   - Aloke Das
 ---
 
 <figure markdown="1">
-![](/assets/images/2019-01-23-writing-gui-applications-on-raspberry-pi-without-x/pi-hud.jpg)
+![]({{ page.cover-img }})
 <figcaption>A simple clock and weather application I've had sitting on my dining room table</figcaption>
 </figure>
 

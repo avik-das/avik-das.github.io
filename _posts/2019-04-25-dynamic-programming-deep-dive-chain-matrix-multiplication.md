@@ -1,6 +1,7 @@
 ---
 title: "Dynamic programming deep-dive: Chain Matrix Multiplication"
 layout: blog
+cover-img: /assets/images/2019-04-25-dynamic-programming-deep-dive-chain-matrix-multiplication/rotated-dag.png
 has_math: true
 ---
 
@@ -154,7 +155,7 @@ With such a deep analysis of the dependency graph, we have a really good idea of
 This is where the visual structure of the dependency graph really shines. Let's rotate the graph so the left-most diagonal is now at the bottom:
 
 <figure markdown="1">
-![](/assets/images/2019-04-25-dynamic-programming-deep-dive-chain-matrix-multiplication/rotated-dag.png)
+![]({{ page.cover-img }})
 <figcaption>A rotated view of the dependency graph shows we can solve subproblems not based on indices, but based on subsequence length.</figcaption>
 </figure>
 

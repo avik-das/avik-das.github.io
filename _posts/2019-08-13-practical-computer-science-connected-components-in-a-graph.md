@@ -1,10 +1,11 @@
 ---
 title: "Practical computer science: connected components in a graph"
 layout: blog
+cover-img: /assets/images/2019-08-13-practical-computer-science-connected-components-in-a-graph/baby-graph.jpg
 ---
 
 <figure markdown="1">
-![](/assets/images/2019-08-13-practical-computer-science-connected-components-in-a-graph/baby-graph.jpg)
+![]({{ page.cover-img }})
 </figure>
 
 My friend has recently been going through [Cracking the Code Interview](http://www.crackingthecodinginterview.com/). I'm not a fan of any interview process that uses the types of questions in the book, but just from personal curiosity, some of the problems are interesting. One such problem was Baby Names, which I realized was a fun application of an important computer science concept.

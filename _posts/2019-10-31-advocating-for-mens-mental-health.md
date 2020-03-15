@@ -1,10 +1,11 @@
 ---
 title: "Advocating for men's mental health"
 layout: blog
+cover-img: /assets/images/2019-10-31-advocating-for-mens-mental-health/cover-photo.jpg
 ---
 
 <figure markdown="1">
-![Four men sitting on a mountain, laughing and bonding](/assets/images/2019-10-31-advocating-for-mens-mental-health/cover-photo.jpg)
+![Four men sitting on a mountain, laughing and bonding]({{ page.cover-img }})
 <figcaption markdown="1">Photo by [Matheus Ferrero](https://unsplash.com/@matheusferrero) on [Unsplash](https://unsplash.com)
 </figcaption>
 </figure>

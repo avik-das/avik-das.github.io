@@ -1,10 +1,11 @@
 ---
 title: "Reflecting on twelve months of writing"
 layout: blog
+cover-img: /assets/images/2019-12-30-reflecting-on-twelve-months-of-writing/typesetting-letters.jpg
 ---
 
 <figure markdown="1">
-![Block letters, used for typesetting, strewn across a desk.](/assets/images/2019-12-30-reflecting-on-twelve-months-of-writing/typesetting-letters.jpg)
+![Block letters, used for typesetting, strewn across a desk.]({{ page.cover-img }})
 <figcaption>I wrote many words this year. Image by <a href="https://pixabay.com/photos/">Free-Photos</a> from <a href="https://pixabay.com">Pixabay</a>.</figcaption>
 </figure>
 

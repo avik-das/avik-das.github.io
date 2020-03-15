@@ -1,10 +1,11 @@
 ---
 title: "Creating Raspberry Pi applications with Raylib and Ruby"
 layout: blog
+cover-img: /assets/images/2019-02-19-creating-raspberry-pi-applications-with-raylib-and-ruby/logos-and-source-code.png
 ---
 
 <figure markdown="1">
-![An application that shows the Raylib logo, the Ruby logo and the source code for itself](/assets/images/2019-02-19-creating-raspberry-pi-applications-with-raylib-and-ruby/logos-and-source-code.png)
+![An application that shows the Raylib logo, the Ruby logo and the source code for itself]({{ page.cover-img }})
 <figcaption>A small application I wrote in Ruby, using Raylib. The application displays its own source code.</figcaption>
 </figure>
 

@@ -1,10 +1,11 @@
 ---
 title: "Talking about men's health with Nash"
 layout: blog
+cover-img: /assets/images/2019-11-19-talking-about-mens-health-with-nash/cover-photo.jpg
 ---
 
 <figure markdown="1">
-![An overhead photo of two people sitting at a table with coffee. Only the coffee and their hands are visible.](/assets/images/2019-11-19-talking-about-mens-health-with-nash/cover-photo.jpg)
+![An overhead photo of two people sitting at a table with coffee. Only the coffee and their hands are visible.]({{ page.cover-img }})
 <figcaption markdown="1">Photo by [Joshua Ness](https://unsplash.com/@theexplorerdad) on [Unsplash](https://unsplash.com)
 </figcaption>
 </figure>

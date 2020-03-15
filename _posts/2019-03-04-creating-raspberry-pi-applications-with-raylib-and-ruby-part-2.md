@@ -1,10 +1,11 @@
 ---
 title: "Creating Raspberry Pi applications with Raylib and Ruby - Part II"
 layout: blog
+cover-img: /assets/images/2019-03-04-creating-raspberry-pi-applications-with-raylib-and-ruby-part-2/hud-weather-forecast.jpg
 ---
 
 <figure markdown="1">
-![Four weather predictions are shown at three hour intervals. Each prediciton has an icon showing the predicted weather, and a predicted temperature. The temperatures are connected in a line chart.](/assets/images/2019-03-04-creating-raspberry-pi-applications-with-raylib-and-ruby-part-2/hud-weather-forecast.jpg)
+![Four weather predictions are shown at three hour intervals. Each prediciton has an icon showing the predicted weather, and a predicted temperature. The temperatures are connected in a line chart.]({{ page.cover-img }})
 <figcaption>My personal heads-up display, running on my Raspberry Pi and showing the weather forecast. This feature was easy to develop thanks to some higher-level abstractions I wrote for myself in Ruby.</figcaption>
 </figure>
 

@@ -1,12 +1,13 @@
 ---
 title: "Setting up an LCD screen on the Raspberry Pi, 2019 edition"
 layout: blog
+cover-img: /assets/images/2018-12-31-setting-up-lcd-screen-on-raspberry-pi/show-desktop.jpg
 thanks:
   - Ty Terdan
 ---
 
 <figure markdown="1">
-![The PIXEL desktop works, with touchscreen support](/assets/images/2018-12-31-setting-up-lcd-screen-on-raspberry-pi/show-desktop.jpg)
+![The PIXEL desktop works, with touchscreen support]({{ page.cover-img }})
 </figure>
 
 I recently bought a [3.5" TFT touchscreen display](https://www.amazon.com/gp/product/B07FJWGZC2/) for my Raspberry Pi. The display connects via the GPIO pins and fits neatly onto the form factor of the Raspberry Pi 3. The idea was to add a GUI application onto the Pi, which had until now been acting as a headless web and application server.

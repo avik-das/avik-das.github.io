@@ -1,6 +1,7 @@
 ---
 title: "A graphical introduction to dynamic programming"
 layout: blog
+cover-img: /assets/images/2019-04-15-visual-introduction-to-dynamic-programming/fibonacci-memoized.png
 has_math: true
 thanks:
   - Ty Terdan
@@ -68,7 +69,7 @@ One way to avoid re-calculating the same subproblems again and again is to cache
 - Otherwise, compute the result and store it in the cache, associating the result with the input that generated it. The next time the same subproblem needs to be solved, the corresponding result will already be in the cache.
 
 <figure markdown="1">
-![](/assets/images/2019-04-15-visual-introduction-to-dynamic-programming/fibonacci-memoized.png)
+![]({{ page.cover-img }})
 <figcaption>By caching the results of subproblems, many recursive calls are eliminated.</figcaption>
 </figure>
 

@@ -1,10 +1,11 @@
 ---
 title: "A tree-based introduction to backtracking"
 layout: blog
+cover-img: /assets/images/2020-02-25-a-tree-based-introduction-to-backtracking/cover-tree.jpg
 ---
 
 <figure markdown="1">
-![A photo of a tree with many branches.](/assets/images/2020-02-25-a-tree-based-introduction-to-backtracking/cover-tree.jpg)
+![A photo of a tree with many branches.]({{ page.cover-img }})
 <figcaption markdown="1">Backtracking is all about exploring the branches of a solution space. Photo by [Brandon Green](https://unsplash.com/@brandgreen) on [Unsplash](https://unsplash.com/s/photos/tree-branches).
 </figcaption>
 </figure>

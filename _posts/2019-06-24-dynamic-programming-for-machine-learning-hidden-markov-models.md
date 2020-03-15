@@ -1,11 +1,12 @@
 ---
 title: "Dynamic programming for machine learning: Hidden Markov Models"
 layout: blog
+cover-img: /assets/images/2019-06-24-dynamic-programming-for-machine-learning-hidden-markov-models/header-applications.png
 has_math: true
 ---
 
 <figure markdown="1">
-![](/assets/images/2019-06-24-dynamic-programming-for-machine-learning-hidden-markov-models/header-applications.png)
+![]({{ page.cover-img }})
 <figcaption>Hidden Markov Models are used in a variety of applications, such as speech recognition, face detection and gene finding.</figcaption>
 </figure>
 
