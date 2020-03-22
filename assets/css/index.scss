@@ -51,6 +51,24 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+#hiring-for-tech {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  border: 3px dashed #020;
+  border-radius: 5px;
+
+  margin: 16px 0;
+  padding: 0 16px;
+  background: #cdffcd;
+
+  :first-child img {
+    margin-right: 16px;
+    flex-shrink: 1;
+  }
+}
+
 #recent-posts ul {
   padding: 0;
   margin: 1em;
