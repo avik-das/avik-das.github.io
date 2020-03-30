@@ -46,7 +46,7 @@ figure {
   padding: 0;
   text-align: center;
 
-  img, .youtube-video {
+  img {
     max-width: calc(100% + #{$body-padding * 2});
     margin: 0 0 0 #{-$body-padding};
   }
@@ -84,10 +84,16 @@ figure {
     position: relative;
 
     height: 0;
-    padding-bottom: calc(56.25% + #{$body-padding * 2});
+    padding-bottom: calc(56.25% + #{$body-padding * 2 * 0.5625});
 
-    margin-top: 16px;
-    margin-bottom: 16px;
+    // Unlike images, which sometimes are skinny enough to not fill up the
+    // entire width of the screen, Youtube videos will always be large enough.
+    // Due to some strange interaction with iframes, we have to force these
+    // videos to take up their maximum width.
+    //
+    // Thus, images have a max-width and Youtube videos have a width.
+    width: calc(100% + #{$body-padding * 2});
+    margin: 16px 0 16px #{-$body-padding};
 
     > iframe {
       position: absolute;
