@@ -21,23 +21,23 @@
   <link rel="stylesheet" href="/assets/css/index.css">
 </head>
 <body>
-  <img id="avatar" src="/assets/images/avatar.png" width="256" height="256" />
-
-  <h1 id="name">Avik Das</h1>
+  <img id="avatar" src="/assets/images/headshot.jpg" width="256" height="256" />
 
   <ul id="external-sites">
-    <li><a href="{{ site.author.linkedin }}"><img src="/assets/images/logo-linkedin.png" width="64" height="64" /></a></li>
-    <li><a href="{{ site.author.github }}"><img src="/assets/images/logo-github.png" width="64" height="64" /></a></li>
-    <li><a href="{{ site.author.twitter }}"><img src="/assets/images/logo-twitter.png" width="64" height="64" /></a></li>
+    <li><a href="{{ site.author.linkedin }}"><img src="/assets/images/logo-linkedin.png" width="24" height="24" /></a></li>
+    <li><a href="{{ site.author.github }}"><img src="/assets/images/logo-github.png" width="24" height="24" /></a></li>
+    <li><a href="{{ site.author.twitter }}"><img src="/assets/images/logo-twitter.png" width="24" height="24" /></a></li>
   </ul>
+
+  <h1 id="name">Avik Das</h1>
 
   <section id="hiring-for-tech">
     <p><a href="https://hiringfor.tech"><img src="/assets/images/logo-hiringfortech.png" width="64" height="64" /></a></p>
     <p>Looking for my weekly newsletter on all things tech hiring? Go to <a href="https://hiringfor.tech">HiringFor.Tech</a> for more details.</p>
   </section>
 
-  <section id="recent-posts">
-    <h2>Recent posts</h2>
+  <section id="blog-posts">
+    <h2>Blog posts</h2>
 
     {% assign posts_by_year =
         site.posts | group_by_exp:"post", "post.date | date: '%Y'" %}
@@ -47,7 +47,7 @@
 
     <ul>
       {% for post in year.items %}
-      <li><a href="{{ post.url }}">{{ post.title }}</a> - {{ post.date | date: "%b %-d, %Y" }}</li>
+      <li><a href="{{ post.url }}">{{ post.title }}</a> &ndash; {{ post.date | date: "%b %-d, %Y" }}</li>
       {% endfor %}
     </ul>
     {% endfor %}
