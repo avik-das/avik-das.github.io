@@ -125,6 +125,18 @@ pre {
 
 .MathJax_Display { overflow-x: auto; }
 
+// PLAYABLE DEMOS /////////////////////////////////////////////////////////////
+
+.playable-demo-play-button {
+  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.2));
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: transform 0.1s;
+  }
+}
+
 // FOOTER /////////////////////////////////////////////////////////////////////
 
 #thanks { color: $lighter-text-color; }
