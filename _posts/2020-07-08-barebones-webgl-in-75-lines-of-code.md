@@ -177,6 +177,12 @@ gl.drawArrays(gl.TRIANGLES, 0, 3);
 
 The way we've set this up in a linear fashion does mean the program runs in one shot. In any practical application, we'd store the data in a structured way, send it to the GPU whenever it changes, and perform the drawing every frame.
 
+## Demo
+
+I've embedded the full code into this blog post, so if everything is set up on your browser to execute Javascript and view WebGL content, you should see the result below:
+
+<figure><canvas id="demo-container" width="200" height="200"></canvas></figure>
+
 ---
 
 Putting everything together, the diagram below shows the minimal set of concepts that go into showing your first triangle on the screen. Even then, the diagram is heavily simplified, so your best bet is to put together the 75 lines of code presented in this article and study that.
@@ -187,3 +193,87 @@ Putting everything together, the diagram below shows the minimal set of concepts
 </figure>
 
 The hard part of learning OpenGL for me has been the sheer amount of boilerplate needed to get the most basic image on the screen. Because the rasterization framework requires us to provide 3D rendering functionality, and communicating with the GPU is verbose, there are many concepts to learn right up front. I hope this article shows the basics are simpler than other tutorials make them out to be!
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+
+// INITIALIZE /////////////////////////////////////////////////////////////////
+
+    const canvas = document.getElementById('demo-container');
+    const gl = canvas.getContext('webgl');
+
+    gl.clearColor(1, 1, 1, 1);
+
+// COMPILE SHADERS + LINK PROGRAM /////////////////////////////////////////////
+
+    const sourceV = `
+      attribute vec3 position;
+      varying vec4 color;
+
+      void main() {
+        gl_Position = vec4(position, 1);
+        color = gl_Position * 0.5 + 0.5;
+      }
+    `;
+
+    const shaderV = gl.createShader(gl.VERTEX_SHADER);
+    gl.shaderSource(shaderV, sourceV);
+    gl.compileShader(shaderV);
+
+    if (!gl.getShaderParameter(shaderV, gl.COMPILE_STATUS)) {
+      console.error(gl.getShaderInfoLog(shaderV));
+      throw new Error('Failed to compile vertex shader');
+    }
+
+    const sourceF = `
+      precision mediump float;
+      varying vec4 color;
+
+      void main() {
+        gl_FragColor = color;
+      }
+    `;
+
+    const shaderF = gl.createShader(gl.FRAGMENT_SHADER);
+    gl.shaderSource(shaderF, sourceF);
+    gl.compileShader(shaderF);
+
+    if (!gl.getShaderParameter(shaderF, gl.COMPILE_STATUS)) {
+      console.error(gl.getShaderInfoLog(shaderF));
+      throw new Error('Failed to compile fragment shader');
+    }
+
+    const program = gl.createProgram();
+    gl.attachShader(program, shaderV);
+    gl.attachShader(program, shaderF);
+    gl.linkProgram(program);
+
+    if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+      console.error(gl.getProgramInfoLog(program));
+      throw new Error('Failed to link program');
+    }
+
+    gl.useProgram(program);
+
+// CREATE VBO + SEND DATA TO GPU ////////////////////////////////////////////
+
+    const positionsData = new Float32Array([
+      -0.75, -0.65, -1,
+       0.75, -0.65, -1,
+       0   ,  0.65, -1,
+    ]);
+
+    const buffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+    gl.bufferData(gl.ARRAY_BUFFER, positionsData, gl.STATIC_DRAW);
+
+    const attribute = gl.getAttribLocation(program, 'position');
+    gl.enableVertexAttribArray(attribute);
+    gl.vertexAttribPointer(attribute, 3, gl.FLOAT, false, 0, 0);
+
+// DRAW! ////////////////////////////////////////////////////////////////////
+
+    gl.clear(gl.COLOR_BUFFER_BIT);
+    gl.drawArrays(gl.TRIANGLES, 0, 3);
+  });
+</script>
