@@ -47,7 +47,17 @@
 
     <ul>
       {% for post in year.items %}
-      <li><a href="{{ post.url }}">{{ post.title }}</a> &ndash; {{ post.date | date: "%b %-d, %Y" }}</li>
+      <a href="{{ post.url }}">
+        <li>
+          {% if post.cover-img %}
+            <img class="cover-img" src="{{ post.cover-img }}" width="64" height="64" />
+          {% else %}
+            <span class="cover-img"></span>
+          {% endif %}
+          <span class="title">{{ post.title }}</span>
+          <span class="date">{{ post.date | date: "%b %-d, %Y" }}</span>
+        </li>
+      </a>
       {% endfor %}
     </ul>
     {% endfor %}
