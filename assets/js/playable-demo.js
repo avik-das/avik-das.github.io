@@ -11,10 +11,16 @@
  * @param renderer  the function to call when the play button is clicked
  */
 function createPlayableDemo(canvas, renderer) {
-  const ctx = canvas.getContext('2d');
+  const placeholder = document.createElement('canvas');
+  placeholder.width = canvas.width;
+  placeholder.height = canvas.height;
+  placeholder.id = canvas.id;
+  placeholder.classList.add('playable-demo-play-button');
 
-  const w = canvas.clientWidth;
-  const h = canvas.clientHeight;
+  const ctx = placeholder.getContext('2d');
+
+  const w = canvas.width;
+  const h = canvas.height;
 
   const cx = w / 2;
   const cy = h / 2;
@@ -41,25 +47,18 @@ function createPlayableDemo(canvas, renderer) {
   ctx.closePath();
   ctx.fill();
 
-  // Allow styling the button
-  canvas.classList.add('playable-demo-play-button');
+  canvas.parentNode.replaceChild(placeholder, canvas);
 
   // On click, switch to the main demo. Do this by replacing the play button
   // canvas with a fresh canvas with the same ID and size.
-  canvas.addEventListener('click', () => {
-    const demoCanvas = document.createElement('canvas');
-
-    demoCanvas.width = canvas.width;
-    demoCanvas.height = canvas.height;
-    demoCanvas.id = canvas.id;
-
-    demoCanvas.addEventListener('dblclick', () => {
-      if (demoCanvas.requestFullscreen) {
-        demoCanvas.requestFullscreen();
+  placeholder.addEventListener('click', () => {
+    canvas.addEventListener('dblclick', () => {
+      if (canvas.requestFullscreen) {
+        canvas.requestFullscreen();
       }
     });
 
-    canvas.parentNode.replaceChild(demoCanvas, canvas);
-    renderer(demoCanvas);
+    placeholder.parentNode.replaceChild(canvas, placeholder);
+    renderer(canvas);
   });
 }
