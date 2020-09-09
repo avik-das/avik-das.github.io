@@ -61,12 +61,13 @@ export default class BezierCurve {
    * tangent vector should not depend on how far apart the sampled points
    * are spaced.
    */
-  tangentAtIndex = i =>
+  tangentAtIndex(i) {
     // NOTE: account for extra points at the beginning of the padded array
     // of sampled points when indexing into that array.
-    this._sampledPointsWithPadding[i + 3]
+    return this._sampledPointsWithPadding[i + 3]
       .sub(this._sampledPointsWithPadding[i + 1])
       .normalized;
+  }
 
   /**
    * Compute and return the normal vector at the given sampled point index,
@@ -76,9 +77,10 @@ export default class BezierCurve {
    * The returned vector is of variable length because the length captures
    * how fast the curve is changing direction.
    */
-  normalAtIndex = i =>
-    this.tangentAtIndex(i + 1)
+  normalAtIndex(i) {
+    return this.tangentAtIndex(i + 1)
       .sub(this.tangentAtIndex(i - 1));
+  }
 
   /**
    * Compute the Frenet-Serret frame at the given sampled point index. The

@@ -13,24 +13,26 @@ export default class Vec3 {
     this.z = z;
   }
 
-  add = v => new Vec3(this.x + v.x, this.y + v.y, this.z + v.z);
-  sub = v => new Vec3(this.x - v.x, this.y - v.y, this.z - v.z);
-  mul = c => new Vec3(this.x * c  , this.y * c  , this.z * c);
-  div = c => new Vec3(this.x / c  , this.y / c  , this.z / c);
+  add(v) { return new Vec3(this.x + v.x, this.y + v.y, this.z + v.z); }
+  sub(v) { return new Vec3(this.x - v.x, this.y - v.y, this.z - v.z); }
+  mul(c) { return new Vec3(this.x * c  , this.y * c  , this.z * c); }
+  div(c) { return new Vec3(this.x / c  , this.y / c  , this.z / c); }
 
   get negated() { return this.mul(-1); }
 
-  dot = v => this.x * v.x + this.y * v.y + this.z * v.z;
+  dot(v) { return this.x * v.x + this.y * v.y + this.z * v.z; }
   get norm() { return Math.sqrt(this.dot(this)); }
   get normalized() { return this.div(this.norm); }
 
-  dist = v => this.sub(v).norm;
+  dist(v) { return this.sub(v).norm; }
 
-  cross = v => new Vec3(
-    this.y * v.z - this.z * v.y,
-    this.z * v.x - this.x * v.z,
-    this.x * v.y - this.y * v.x
-  );
+  cross(v) {
+    return new Vec3(
+      this.y * v.z - this.z * v.y,
+      this.z * v.x - this.x * v.z,
+      this.x * v.y - this.y * v.x
+    );
+  }
 
   get coordinates() { return [this.x, this.y, this.y]; }
   *[Symbol.iterator]() {
@@ -39,8 +41,8 @@ export default class Vec3 {
     yield this.z;
   }
 
-  clone = () => new Vec3(this.x, this.y, this.z);
+  clone() { return new Vec3(this.x, this.y, this.z); }
 
-  lerp = (v, t) => this.mul(1 - t).add(v.mul(t));
-  mean = v => this.sub(v).div(2).add(v);
+  lerp(v, t) { return this.mul(1 - t).add(v.mul(t)); }
+  mean(v) { return this.sub(v).div(2).add(v); }
 }

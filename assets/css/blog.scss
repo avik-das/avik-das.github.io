@@ -139,6 +139,7 @@ pre {
 
 figure > canvas,
 .container-interactive-canvas {
+  max-width: 512px; // For older browsers that don't support `min()`
   max-width: min(512px, 100%);
   margin: 16px auto;
 }
