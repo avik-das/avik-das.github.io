@@ -1,5 +1,6 @@
 import Vec3 from '/assets/js/vec3.mjs';
 import BezierCurve from '/assets/js/curve-optimization/bezier.mjs';
+import SampledCurve from '/assets/js/curve-optimization/sampled-curve.mjs';
 import { html, render }
   from 'https://unpkg.com/htm@3.0.4/preact/index.mjs?module';
 import { useCallback, useState }
@@ -19,8 +20,10 @@ function Curve2D(props) {
   const [curve, setCurve] = useState(null);
   const [t, setT] = useState(0.75);
 
-  const createCurve =
-    numSamples => new BezierCurve(props.controlPoints, numSamples);
+  const createCurve = numSamples => new SampledCurve(
+    new BezierCurve(props.controlPoints),
+    numSamples
+  );
 
   // Performance optimization: `useState` is called every time this component
   // is rendered. So, it's important to not construct a "default" curve if not

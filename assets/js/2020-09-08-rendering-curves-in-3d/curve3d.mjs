@@ -1,5 +1,6 @@
 import Vec3 from '/assets/js/vec3.mjs';
 import BezierCurve from '/assets/js/curve-optimization/bezier.mjs';
+import SampledCurve from '/assets/js/curve-optimization/sampled-curve.mjs';
 
 import {
   threeJSGeometryFromCurve,
@@ -8,13 +9,13 @@ import {
 
 import { ModelViewerApp } from '/assets/js/3d-render.mjs';
 
-const curve = new BezierCurve(
-  [
+const curve = new SampledCurve(
+  new BezierCurve([
     new Vec3(-1.2, -0.15, 0),
     new Vec3(-1.0,  1.25, 0),
     new Vec3( 1.0, -1.75, 0),
     new Vec3( 1.2,  0.55, 0),
-  ],
+  ]),
   40
 );
 
