@@ -11,6 +11,8 @@ import { OrbitControls }
  * - Pointer controls.
  * - Easy to add meshes (with standard materials) given some geometry.
  *
+ * Escape hatches are available to make customizations as necessary.
+ *
  * Usage:
  *
  * ```js
@@ -66,20 +68,49 @@ export class ModelViewerApp {
 
   /**
    * Convenience method for adding a standard 3D model to render, given a
-   * three.js `Geometry` object. The geometry should have normals and colors
-   * for each vertex, as the corresponding material will have be
-   * light-sensitive and have per-vertex colors enabled.
+   * three.js `Geometry` object. See {@link #standardMeshForGeometry} for more
+   * information about how the geometry should be constructed.
    *
    * @return `this` for chaining
    */
   addGeometry(geometry) {
+    const mesh = this.standardMeshForGeometry(geometry);
+    return this.addMesh(mesh);
+  }
+
+  /**
+   * Convenience method for adding a 3D model to render, given a three.js
+   * `Mesh` object. In most cases, {@link #addGeometry} should be preferred,
+   * but this method can be used if:
+   *
+   * - A non-standard material is desired.
+   * - The mesh needs to be modified more than in {@link #addGeometry}.
+   *
+   * For the latter scenario, you can use {@link #standardMeshForGeometry} as a
+   * starting point for generating the mesh with the standard material.
+   *
+   * @return `this` for chaining
+   */
+  addMesh(mesh) {
+    this.scene.add(mesh);
+    return this;
+  }
+
+  /**
+   * Create a three.js `Mesh` object given a three.js `Geometry`. The resulting
+   * mesh will have the "standard" material, which is light-sensitive and has
+   * per-vertex colors enabled. As a result, the input geometry should have
+   * normals and colors for each vertex.
+   *
+   * @return the Three.js `Mesh` object for the given geometry
+   */
+  standardMeshForGeometry(geometry) {
     const material = new THREE.MeshPhongMaterial({
       side: THREE.FrontSide,
       vertexColors: true
     });
 
-    this.scene.add(new THREE.Mesh(geometry, material));
-    return this;
+    return new THREE.Mesh(geometry, material);
   }
 
   /**

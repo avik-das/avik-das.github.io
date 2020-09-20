@@ -48,6 +48,18 @@ export class RotationMinimizingFrames {
 }
 
 /**
+ * Defines the colors of the sides of the rendered curve. Each cross-section is
+ * constructed as an N-sided regular polygon, with N being the number of colors
+ * defined here.
+ */
+const CROSS_SECTION_COLORS = [
+  [0.17, 0.43, 0.73],
+  [1.00, 0.39, 0.12],
+  [0.18, 0.64, 0.72],
+  [1.00, 0.92, 0.41],
+];
+
+/**
  * Construct a 3D mesh and a `BufferGeometry` from the given one-dimensional
  * curve.
  *
@@ -65,15 +77,95 @@ export class RotationMinimizingFrames {
  *
  * 1. `numSampledPoints` - the number of sampled points
  * 2. `sampledPoints` - an array of `Vec3` objects, one for each sampled point
+ *
+ * Once the geometry has been created, it can be updated with the positions of
+ * another curve using {@link updatethreejsgeometryfromcurve}, assuming that
+ * curve has the same number of sampled points as the initial one.
  */
 export function threeJSGeometryFromCurve(curve, frameAtIndex) {
-  const CROSS_SECTION_COLORS = [
-    [0.17, 0.43, 0.73],
-    [1.00, 0.39, 0.12],
-    [0.18, 0.64, 0.72],
-    [1.00, 0.92, 0.41],
+  const N = CROSS_SECTION_COLORS.length;
+  const M = curve.numSampledPoints;
+
+  // Define enough colors in anticipation of the number of vertices in the
+  // final geometry. See `updatethreejsgeometryfromcurve` for the construction
+  // of the vertices.
+  const colors = [];
+
+  // Define the colors for the vertices at the end caps...
+  for (let i = 0; i < 2; i++) {
+    for (let ci = 0; ci < CROSS_SECTION_COLORS.length; ci++) {
+      colors.push([0.2, 0.2, 0.2]);
+    }
+  }
+
+  // ...and along the curve.
+  for (let pi = 0; pi < curve.numSampledPoints; pi++) {
+    for (let ci = 0; ci < N; ci++) {
+      colors.push(CROSS_SECTION_COLORS[ci]);
+      colors.push(CROSS_SECTION_COLORS[ci]);
+    }
+  }
+
+  // Ideally, we should have enough triangles in the beginning to cover
+  // whatever shape of cross-section is defined by `cross_section_colors`.
+  // however, for now, assume a square cross-section, i.e. two trianges for
+  // each end of the curve.
+  const indices = [
+    [0, 2, 1],
+    [0, 3, 2],
+    [4, 5, 6],
+    [4, 6, 7],
   ];
 
+  for (let pi = 0; pi < M - 1; pi++) {
+    const pj = (pi + 1) % M;
+
+    for (let ci = 0; ci < N * 2; ci += 2) {
+      const cj = (ci + 1) % (N * 2);
+
+      const oi = pi * 2 * N + 2 * N;
+      const oj = pj * 2 * N + 2 * N;
+
+      indices.push([oj + cj, oi + ci, oi + cj]);
+      indices.push([oj + ci, oi + ci, oj + cj]);
+    }
+  }
+
+  const bufferFromNestedArrays = arrays =>
+    new THREE.Float32BufferAttribute(arrays.flatMap(ary => [...ary]), 3);
+
+
+  const geometry = new THREE.BufferGeometry();
+  geometry.setIndex(indices.flat());
+
+  // Start by initializing the "position" and "normal" arrays with the colors.
+  // The actual values inside these arrays don't matter, as they will be
+  // overwritten immediately.
+  geometry.setAttribute('position', bufferFromNestedArrays(colors));
+  geometry.setAttribute('normal', bufferFromNestedArrays(colors));
+  geometry.setAttribute('color', bufferFromNestedArrays(colors));
+
+  updateThreeJSGeometryFromCurve(geometry, curve, frameAtIndex);
+
+  return geometry;
+}
+
+/**
+ * Update the given `BufferGeometry`'s vertices based on the given
+ * one-dimensional curve. This update makes the following assumptions:
+ *
+ * 1. The geometry was already created once for some curve, so only the
+ *    positions and normals for the vertices are updated. In particular, the
+ *    connectivity of the vertices and their colors remains the same.
+ *
+ * 2. The number of sampled points has not changed from the curve used to
+ *    initially create the geometry. This update is meant specifically for
+ *    movement, not other transformations.
+ *
+ * See {@link threeJSGeometryFromCurve} for more information about the `curve`
+ * and `frameAtIndex` parameters.
+ */
+export function updateThreeJSGeometryFromCurve(geometry, curve, frameAtIndex) {
   const N = CROSS_SECTION_COLORS.length;
   const M = curve.numSampledPoints;
 
@@ -98,11 +190,9 @@ export function threeJSGeometryFromCurve(curve, frameAtIndex) {
 
   const positions = [];
   const normals = [];
-  const colors = [];
 
   positions.push.apply(positions, uniquePoints[0]);
   positions.push.apply(positions, uniquePoints[M - 1]);
-  colors.push.apply(colors, positions.map(() => [0.2, 0.2, 0.2]));
 
   const normal0 = uniquePoints[0][0].sub(uniquePoints[0][1])
     .cross(uniquePoints[0][2].sub(uniquePoints[0][1]))
@@ -129,41 +219,19 @@ export function threeJSGeometryFromCurve(curve, frameAtIndex) {
 
       normals.push(normal);
       normals.push(normal);
-
-      colors.push(CROSS_SECTION_COLORS[ci]);
-      colors.push(CROSS_SECTION_COLORS[ci]);
     }
   }
 
-  const indices = [
-    [0, 2, 1],
-    [0, 3, 2],
-    [4, 5, 6],
-    [4, 6, 7],
-  ];
+  for (let i = 0; i < positions.length; i++) {
+    geometry.attributes.position.array[i * 3    ] = positions[i].x;
+    geometry.attributes.position.array[i * 3 + 1] = positions[i].y;
+    geometry.attributes.position.array[i * 3 + 2] = positions[i].z;
 
-  for (let pi = 0; pi < M - 1; pi++) {
-    const pj = (pi + 1) % M;
-
-    for (let ci = 0; ci < N * 2; ci += 2) {
-      const cj = (ci + 1) % (N * 2);
-
-      const oi = pi * 2 * N + 2 * N;
-      const oj = pj * 2 * N + 2 * N;
-
-      indices.push([oj + cj, oi + ci, oi + cj]);
-      indices.push([oj + ci, oi + ci, oj + cj]);
-    }
+    geometry.attributes.normal.array[i * 3    ] = normals[i].x;
+    geometry.attributes.normal.array[i * 3 + 1] = normals[i].y;
+    geometry.attributes.normal.array[i * 3 + 2] = normals[i].z;
   }
 
-  const bufferFromNestedArrays = arrays =>
-    new THREE.Float32BufferAttribute(arrays.flatMap(ary => [...ary]), 3);
-
-  const geometry = new THREE.BufferGeometry();
-  geometry.setIndex(indices.flat());
-  geometry.setAttribute('position', bufferFromNestedArrays(positions));
-  geometry.setAttribute('normal', bufferFromNestedArrays(normals));
-  geometry.setAttribute('color', bufferFromNestedArrays(colors));
-
-  return geometry;
+  geometry.attributes.position.needsUpdate = true;
+  geometry.attributes.normal.needsUpdate = true;
 }
