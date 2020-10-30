@@ -138,7 +138,15 @@ pre {
 }
 
 figure > canvas,
-.container-interactive-canvas {
+.container-interactive-canvas,
+.container-interactive-canvas canvas {
+  // NOTE: ensure that the actual canvas element gets the `max-width` assigned
+  // to it. That will ensure the canvas' height is correctly scaled according
+  // to its aspect ratio.
+  //
+  // Otherwise, if only the surrounding container has a `max-width`, the canvas
+  // will still be squished horizontally, but its height will stay the same.
+
   max-width: 512px; // For older browsers that don't support `min()`
   max-width: min(512px, 100%);
   margin: 16px auto;
