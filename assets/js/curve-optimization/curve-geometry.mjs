@@ -11,6 +11,7 @@ import * as THREE from 'https://unpkg.com/three@0.120.1/build/three.module.js';
 export class RotationMinimizingFrames {
   constructor(curve) {
     this.frames = this._computeFrames(curve);
+    this.endToEndTwist = this._computeEndToEndTwist();
   }
 
   _computeFrames(curve) {
@@ -44,6 +45,27 @@ export class RotationMinimizingFrames {
     }
 
     return frames;
+  }
+
+  /**
+   * The end-to-end twist for a curve is the angle of mismatch between the
+   * initial and ending rotation-minimizing frames.
+   *
+   * Always given in the range [0, 2π), which may not be appropriate in certain
+   * contexts. For example, if the curve is defined as having a large (>2π)
+   * twist, then the application should adjust this end-to-end twist to be
+   * close to the curve's starting twist.
+   *
+   * This property is always calculated, but it's only meaningful for closed
+   * curves, where the start and end positions are the same.
+   */
+  _computeEndToEndTwist() {
+    const r0 = this.frames[0].r;
+    const rn = this.frames[this.frames.length - 1].r;
+
+    // Both reference vectors are normalized, so there is no need to normalize
+    // the dot product.
+    return Math.acos(r0.dot(rn));
   }
 }
 
