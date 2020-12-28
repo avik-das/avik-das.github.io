@@ -126,12 +126,16 @@ The only caveat here is we need an initial frame to start off the process. In th
 
 A curious thing can happen if the curve is a closed loop that doesn't lie on one plane. Take a look at the following curve:
 
-<figure markdown="1">
-![A curve that is not planar. The two ends meet, but by the time the curve comes back to itself, the RMF has rotated 180 degrees.](/assets/images/2020-09-08-rendering-curves-in-3d/closed-loop-with-mismatched-ends.png)
-<figcaption>An non-planar curve might end up with misaligned ends</figcaption>
+<figure>
+  <canvas
+    id="container-3d-mismatch"
+    class="container-3d"
+    width="512"
+    height="512"></canvas>
+<figcaption>A non-planar curve might end up with misaligned ends</figcaption>
 </figure>
 
-(I need to do some work before I can render this curve properly in WebGL. I'll replace the picture with an interactive demo when I implement the necessary functionality.)
+([Link to screenshot](/assets/images/2020-12-29-space-curves-and-twist/fallback-mismatched-ends.png) if your browser isn't new enough.)
 
 Even though the cross sections are created using Rotation Minimizing Frames, the starting and ending cross sections don't line up with each other. In fact, I created this curve so that the starting and ending frames are exactly $180^{\circ}$ apart!
 
@@ -157,6 +161,8 @@ If you're curious, I used the following technologies for the visualizations in t
     renderAppWithFrenetSerretFrame,
     renderAppWithRotationMinimizingFrame
   } from '/assets/js/2020-09-08-rendering-curves-in-3d/curve3d.mjs';
+  import { renderAppWithMismatchedEnds }
+    from '/assets/js/2020-12-29-space-curves-and-twist/curve3d.mjs';
 
   window.addEventListener('DOMContentLoaded', () => {
     renderAppWith2DCurve(document.querySelector('#container-2d-curve'))
@@ -169,6 +175,11 @@ If you're curious, I used the following technologies for the visualizations in t
     createPlayableDemo(
       document.querySelector('#container-3d-rmf'),
       renderAppWithRotationMinimizingFrame
+    );
+
+    createPlayableDemo(
+      document.querySelector('#container-3d-mismatch'),
+      renderAppWithMismatchedEnds
     );
   });
 </script>
