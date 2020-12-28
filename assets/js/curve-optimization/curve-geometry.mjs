@@ -70,6 +70,46 @@ export class RotationMinimizingFrames {
 }
 
 /**
+ * Computes and caches frames for a curve, starting with the given Rotation
+ * Minimizing Frames and gradually applying the given end-to-end twist among
+ * those frames.
+ *
+ * Even though the given RMFs has a concept of "end-to-end" twist, the twist
+ * must be explicitly provided by the caller. This allows the twist to be
+ * something other than what the RMFs report as the end-to-end twist.
+ */
+export class RmfsWithInterpolatedTwist {
+  constructor(rmfs, endToEndTwist) {
+    this.frames = this._computeFrames(rmfs, endToEndTwist);
+  }
+
+  _computeFrames(rmfs, endToEndTwist) {
+    const twistPerSample = endToEndTwist / (rmfs.frames.length - 1);
+
+    const frames = [];
+
+    for (let i = 0; i < rmfs.frames.length; i++) {
+      const {
+        t: forward,
+        r: reference,
+        s: upward
+      } = rmfs.frames[i];
+
+      const twistAtSample = twistPerSample * i;
+      const c = Math.cos(twistAtSample);
+      const s = Math.sin(twistAtSample);
+
+      const rotatedReference = reference.mul(c).sub(upward.mul(s));
+      const rotatedUpward    = reference.mul(s).add(upward.mul(c));
+
+      frames.push({ t: forward, r: rotatedReference, u: rotatedUpward });
+    }
+
+    return frames;
+  }
+}
+
+/**
  * Defines the colors of the sides of the rendered curve. Each cross-section is
  * constructed as an N-sided regular polygon, with N being the number of colors
  * defined here.
