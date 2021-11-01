@@ -1,4 +1,5 @@
 source :rubygems
 
-gem 'jekyll', '~> 3.8'
-gem 'jekyll-feed', '~> 0.12.1'
+gem 'jekyll', '~> 3.9'
+gem 'jekyll-feed', '~> 0.15'
+gem 'kramdown-parser-gfm', '~> 1.1.0'
