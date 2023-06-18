@@ -24,6 +24,18 @@ gem install bundler
 bundle
 
 bundle exec jekyll serve
+
+# Or, what I actually use for development:
+#
+# - Use the included live reload functionality
+# - Compile drafts from the _drafts folder and include them in the index
+# - Compile posts with dates in the future
+# - Allow connections from external machines
+bundle exec jekyll server \
+  --livereload \
+  --drafts \
+  --future \
+  --host 0.0.0.0
 ```
 
 Now you can edit the website, and the website will be automatically re-generated.
