@@ -2,6 +2,8 @@
 title: "Setting up a micro PC as a Linux server"
 layout: blog
 cover-img: /assets/images/2023-08-21-setting-up-a-micro-pc-as-a-linux-server/machine-front.jpg
+thanks:
+  - Israel Jacquez
 ---
 
 <figure markdown="1">
@@ -107,6 +109,14 @@ When editing `/etc/fstab`, add the following line:
 # pass=2 - `man fstab` says use "2" for non-root filesystems
 UUID=...  /mnt/storage  ext4  0  2
 ```
+
+EDIT (Sep 5, 2023): I got a suggestion about an alternate way to identify disks in `/etc/fstab`, which took me down a rabbit hole. Here's what I found:
+
+- Firstly, this was something I already knew, but you don't want to use device identifiers like `/dev/sda1`. There's no guarantee these will stay the same across boots. That's why I used the UUID. The UUID is stable, at least until reformatting.
+
+- The suggestion was to use the paths inside of `/dev/disk/by-id`. These are symlinks to files like `/dev/sda1`, but the filenames are human readable. For example, instead of a UUID like I'm using, my SATA SSD partion would be named `ata-INTEL_SSDSC2KB960G8_BTYF92160AB7960CGN-part1`. Definitely nicer! This seems like the way to go, and I'll try it out in the future.
+
+- As always, the [Arch wiki](https://wiki.archlinux.org/title/fstab#Identifying_file_systems) is fantastic, even for non-Arch users. Note that this wiki page doesn't talk about the approach mentioned above, but the [forums sure discuss it at length](https://bbs.archlinux.org/viewtopic.php?id=261988)!
 
 ---
 
