@@ -1,9 +1,10 @@
 ---
 ---
 
+@import '_colors';
+
 // SASS VARIABLES /////////////////////////////////////////////////////////////
 
-$lighter-text-color: #666;
 $body-padding: 20px;
 
 // PAGE LAYOUT ////////////////////////////////////////////////////////////////
@@ -17,7 +18,7 @@ body {
 
 #post-date {
   text-align: center;
-  color: $lighter-text-color;
+  color: var(--text-secondary-color);
 }
 
 // TEXT ///////////////////////////////////////////////////////////////////////
@@ -34,7 +35,8 @@ blockquote {
 }
 
 hr {
-  border: 0.5px solid #ccc;
+  border-width: 0.5px;
+  border-style: solid;
   width: 50%;
   margin: 1em auto;
 }
@@ -113,7 +115,6 @@ figure {
 // CODE SNIPPETS //////////////////////////////////////////////////////////////
 
 pre {
-  background: #eee;
   padding: $body-padding;
 
   overflow-x: auto;
@@ -149,17 +150,23 @@ figure > canvas,
 
 figure > canvas,
 .container-interactive-canvas {
+  @media (prefers-color-scheme: light) { --shadow-color: rgba(0, 0, 0, 0.15); }
+  @media (prefers-color-scheme: dark ) { --shadow-color: rgba(192, 192, 192, 0.15); }
+
   border-radius: 4px;
-  box-shadow: 0 0 6px 3px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 6px 3px var(--shadow-color);
 }
 
 .container-interactive-canvas .interactive-diagram {
-  background: #fff;
+  background: var(--bg-color);
 
   display: flex;
   flex-direction: column;
 
   > svg {
+    // Unlike most backgrounds, force this to be a light background. The SVG
+    // diagrams often assume a light background, just like the WebGL diagrams
+    // set a clear color that's a light background.
     background: #eee;
     max-width: 512px;
   }
@@ -199,7 +206,7 @@ canvas.container-3d {
 
 // FOOTER /////////////////////////////////////////////////////////////////////
 
-#thanks { color: $lighter-text-color; }
+#thanks { color: var(--text-secondary-color); }
 
 #bottom-links {
   text-align: center;

@@ -13,3 +13,7 @@ author:
 
 plugins:
     - jekyll-feed
+
+sass:
+  load_paths:
+    - assets/css

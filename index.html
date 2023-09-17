@@ -25,7 +25,15 @@
 
   <ul id="external-sites">
     <li><a href="{{ site.author.linkedin }}"><img src="/assets/images/logo-linkedin.png" width="24" height="24" /></a></li>
-    <li><a href="{{ site.author.github }}"><img src="/assets/images/logo-github.png" width="24" height="24" /></a></li>
+    <li>
+      <a href="{{ site.author.github }}">
+        <picture>
+          <source srcset="/assets/images/logo-github-dark.png"  width="24" height="24" media="(prefers-color-scheme: light)">
+          <source srcset="/assets/images/logo-github-light.png" width="24" height="24" media="(prefers-color-scheme: dark)">
+          <img src="/assets/images/logo-github-dark.png" width="24" height="24">
+        </picture>
+      </a>
+    </li>
     <li><a href="{{ site.author.twitter }}"><img src="/assets/images/logo-twitter.png" width="24" height="24" /></a></li>
   </ul>
 

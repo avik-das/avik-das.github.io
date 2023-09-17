@@ -12,7 +12,8 @@
   <title>{{ page.title }}</title>
 
   <link rel="stylesheet" href="/assets/css/blog.css">
-  <link rel="stylesheet" href="/assets/css/syntax-github.css">
+  <link rel="stylesheet" href="/assets/css/syntax-github.css" media="(prefers-color-scheme: light)">
+  <link rel="stylesheet" href="/assets/css/syntax-github-dark.css" media="(prefers-color-scheme: dark)">
 
   <!-- Social media metadata -->
   <meta property="og:title" content="{{ page.title }}">
@@ -48,7 +49,15 @@
   <ul id="bottom-links">
     <li><a href="/">Home</a></li>
     <li><a href="{{ site.author.linkedin }}"><img src="/assets/images/logo-linkedin.png" width="24" height="24" /></a></li>
-    <li><a href="{{ site.author.github }}"><img src="/assets/images/logo-github.png" width="24" height="24" /></a></li>
+    <li>
+      <a href="{{ site.author.github }}">
+        <picture>
+          <source srcset="/assets/images/logo-github-dark.png"  width="24" height="24" media="(prefers-color-scheme: light)">
+          <source srcset="/assets/images/logo-github-light.png" width="24" height="24" media="(prefers-color-scheme: dark)">
+          <img src="/assets/images/logo-github-dark.png" width="24" height="24">
+        </picture>
+      </a>
+    </li>
     <li><a href="{{ site.author.twitter }}"><img src="/assets/images/logo-twitter.png" width="24" height="24" /></a></li>
     <li><a href="/feed.xml"><img src="/assets/images/logo-rss.png" width="24" height="24" /></a></li>
   </ul>
