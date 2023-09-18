@@ -98,7 +98,7 @@ We start with a pretty normal figure-8, though one of the arms has been offset a
 
 A planar circle _can_ be rendered without any end-to-end twist, just like any planar curve. But what the demo hints at is that a figure-8 with no twist and a planar circle with no twist are _not_ equivalent! At least not equivalent under the unfolding transformation that we did. Instead, a figure-8 with no twist is equivalent to a planar circle with $360^\circ$ of twist.
 
-This process of accumulating twist over the course of a transformation plays a big part in in my research, something I'll cover in more detail in the next post.
+This process of accumulating twist over the course of a transformation plays a big part in my research, something I'll cover in more detail in the next post.
 
 ---
 
