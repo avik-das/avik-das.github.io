@@ -80,4 +80,19 @@ export default class ClosedBSpline {
 
     return bases[0];
   }
+
+  /**
+   * Update the specified control point by applying deltas to each coordinate.
+   * Do so with an in-place mutation. Note that doing this type of mutation is
+   * dangerous, as all dependent changes, such as the pre-calculated sampling of
+   * the curve, the RMFs, etc. will also need to be updated.
+   *
+   * TODO: questions - can we get away without an in-place update, even though
+   *   that would end up creating a lot of new objects?
+   */
+  applyDeltaToControlPointInPlace(cpi, dx, dy, dz) {
+    this.controlPoints[cpi].x += dx;
+    this.controlPoints[cpi].y += dy;
+    this.controlPoints[cpi].z += dz;
+  }
 }
