@@ -158,7 +158,12 @@ h1, h2, h3, h4, h5, h6 { text-align: center; }
           --stripe-color-1: #111;
           --stripe-color-2: #222;
         }
+      }
 
+      // Only apply the placeholder background if the image is not present.
+      // This allows for partially transparent cover images that let the page
+      // background to show through, instead of also showing the placeholder.
+      span.cover-img {
         background: var(--stripe-color-1);
         background: repeating-linear-gradient(
           135deg,
