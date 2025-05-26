@@ -68,6 +68,20 @@ log_driver = "k8s-file"
 
 It looks like I could have just [added the user in question to the `systemd-journal` group](https://serverfault.com/a/1011140). For now, I'm not bothering, but I'm willing to try it out the next time I encounter this problem.
 
+EDIT (May 25, 2025): I tried adding a user to the `systemd-journal` group, and it worked! The original error I was getting when trying to run something like `podman logs` was:
+
+```
+Error: initial journal cursor: failed to get cursor: cannot assign requested address
+```
+
+Then, I ran, for one of my later services:
+
+```sh
+sudo usermod -a -G systemd-journal jitsi
+```
+
+After restarting the service, I was able to get the logs just fine. No need to  update the container config as described above.
+
 ## One user per service
 
 Using Podman's rootless architecture, I decided that I'll run each service as a separate user. Additionally, I wanted these users to be _system users_. Unlike regular users, system users don't, by default, have a login shell, so they can't be logged into. They also don't show in a listing of login users, say in the login screen of a graphical installation. This latter point is moot for me because I didn't install a GUI. Again, I'm making these choices on principle.
