@@ -9,7 +9,6 @@ author:
   name: Avik Das
   github: https://github.com/avik-das
   linkedin: https://linkedin.com/in/avikdas1990
-  twitter: https://twitter.com/the_avik_das
 
 plugins:
     - jekyll-feed
