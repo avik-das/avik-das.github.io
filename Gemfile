@@ -16,4 +16,8 @@ group :development do
   # github-pages, does not declare webrick as a dependency either. Declare it
   # manually as a workaround.
   gem 'webrick'
+
+  gem 'base64'
+  gem 'bigdecimal'
+  gem 'csv'
 end
